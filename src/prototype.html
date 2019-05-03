@@ -11,46 +11,64 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/styles/styles.css">
 </head>
 <body>
   <div class="container" class="bg-color">
     <!-- Content here -->
     <div class="row align-items-center pt-2">
-      <img class="logo" src="./assets/logo.png">
-      <div class="w-75 ml-5">
-        <input type="text" class="form-control search-bar" placeholder="Search" aria-label="Search bar">
-      </div>  
+      <div class="col-3 pl-0">
+          <img class="logo" src="./assets/logo.png">
+      </div>
+      <div class="col-9 pr-0">
+          <div class="w-100">
+              <input type="text" class="form-control search-bar" placeholder="Search" aria-label="Search bar">
+              <span class="fas fa-search srch-icon"></span>
+            </div>  
+      </div>
     </div>
     <hr class="hr-prolonged"/>
     
 
     <div class="row curved">
-      <div class="col-7 left-column curved">
-        <p>Start searching for videos to get results</p>
-        <iframe width="893" height="502" src="https://www.youtube.com/embed/wN9XZBwbD68" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="col-12 col-lg-8 left-column curved p-0">
+        <!-- <div class="align-items-center d-flex h-100">
+          <p class="m-auto">Start searching for videos to get results</p>
+        </div> -->
+        <div class="embed-responsive embed-responsive-16by9 iframe-curved">
+            <iframe width="893" height="522" src="https://www.youtube.com/embed/wN9XZBwbD68" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info pt-4 pb-4">
+          <div class="channel row align-items-center pb-2 m-0">
+            <img class="channel-img">
+            <h5 class="channel-name pt-2 pl-4">Relaxation Channel</h5>
+          </div>
+          <h4 class=" pt-4">Mount Rainier National Park - Nature Relax Video, Summer Scenery</h4>
+          <p class="description"> Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet</p>
+        </div>
       </div>
-      <div class="col-5 right-column curved">
+      <div class="col-12 col-lg-4 pl-4 right-column curved">
         <h4 class="pt-4 mb-4">Related Videos</h4>
         <hr/>
-        <div class="item d-flex align-items-center pl-4">
-          <img src="..." alt="..." class="d-inline img-thumbnail rounded float-right">
+        <div class="item d-flex align-items-center pb-2">
+          <img src="https://i.ytimg.com/vi/Ks-_Mh1QhMc/mqdefault.jpg" alt="..." class="yt-thumbnail d-inline img-thumbnail rounded">
           <div class="d-inline pl-4">
-              <h4>title</h4>
-              <p>desc2</p>
+              <h5 class="mt-2 mb-0">Lorem ipsum</h5>
+              <p class="description thumbnail-description ">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet</p>
           </div>
         </div>
-        <div class="item d-flex align-items-center pl-4">
-            <img src="..." alt="..." class="d-inline img-thumbnail rounded float-right">
+        <div class="item d-flex align-items-center pb-2">
+            <img src="https://i.ytimg.com/vi/Ks-_Mh1QhMc/mqdefault.jpg" alt="..." class="yt-thumbnail d-inline img-thumbnail rounded">
             <div class="d-inline pl-4">
-                <h4>title</h4>
+                <h4 class="mt-2">title</h4>
                 <p>desc2</p>
             </div>
           </div>
-          <div class="item d-flex align-items-center pl-4">
-              <img src="..." alt="..." class="d-inline img-thumbnail rounded float-right">
+          <div class="item d-flex align-items-center pb-2">
+              <img src="https://i.ytimg.com/vi/Ks-_Mh1QhMc/mqdefault.jpg" alt="..." class="yt-thumbnail d-inline img-thumbnail rounded">
               <div class="d-inline pl-4">
-                  <h4>title</h4>
+                  <h4 class="mt-2">title</h4>
                   <p>desc2</p>
               </div>
             </div>
