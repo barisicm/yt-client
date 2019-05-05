@@ -4,7 +4,8 @@ import { AxiosInstance } from 'axios';
 import { VideoListResponse, IVideos } from '../../models/videos';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../../store/store';
-import { ADD_VIDEO_LIST_ITEM } from '../../../store/actions';
+import { ADD_VIDEO_LIST_ITEM, ADD_VIDEO_IFRAME, ADD_CHANNEL_THUMBNAIL, CLEAR_VIDEO_LIST } from '../../../store/actions';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,18 +23,22 @@ export class YoutubeDataService {
     });
   }
 
-  getSearchResults(query) {
+  getSearchResults(query?: string, cId?: string) {
     this.axiosClient.get<VideoListResponse>('/search', {
       params: {
         part: 'snippet',
         maxResults: 5,
         q: query,
+        channelId: cId,
         type: 'video',
-        key: 'AIzaSyDgzY99hWWws2PTQdvuQlJPoLaW64Cr8z8'
+        key: 'AIzaSyBN3IY5wP_b-6ukixId85hv9c1VgOr6CZI'
       }
     })
     .then((response) => {
-      // console.log(response.data.items);
+      this.ngRedux.dispatch({type: CLEAR_VIDEO_LIST});
+      this.getChannelThumbnail(response.data.items[0].snippet.channelId);
+      this.ngRedux.dispatch({type: ADD_VIDEO_IFRAME, video: this.saveResponseToObject(response)});
+
       response.data.items.map((value) => {
         const videoItem: IVideos = {} as IVideos;
         videoItem.channelId = value.snippet.channelId;
@@ -50,21 +55,31 @@ export class YoutubeDataService {
     });
   }
 
-  getVideoById(vid) {
-    this.axiosClient.get('/videos', {
-      params: {
-        part: 'player',
-        id: 'tAGnKpE4NCI',
-        // id: vid,
-        maxHeight: 522,
-        key: 'AIzaSyDgzY99hWWws2PTQdvuQlJPoLaW64Cr8z8'
-      }
+  getChannelThumbnail(cid) {
+    this.axiosClient.get('/channels', {
+     params: {
+      id: cid,
+      part: 'snippet',
+      fields: 'items(snippet(thumbnails(medium(url))))',
+      key: 'AIzaSyBN3IY5wP_b-6ukixId85hv9c1VgOr6CZI'
+     }
     })
     .then((response) => {
-      console.log(response);
+      this.ngRedux.dispatch({type: ADD_CHANNEL_THUMBNAIL, channelThumbnailUrl: response.data.items[0].snippet.thumbnails.medium.url});
     })
     .catch((error) => {
-      console.log(error);
+
     });
+  }
+
+  saveResponseToObject(response) {
+    const videoItem: IVideos = {} as IVideos;
+    videoItem.channelId = response.data.items[0].snippet.channelId;
+    videoItem.channelTitle = response.data.items[0].snippet.channelTitle;
+    videoItem.description = response.data.items[0].snippet.description;
+    videoItem.thumbnailUrl = response.data.items[0].snippet.thumbnails.default.url;
+    videoItem.videoId = response.data.items[0].id.videoId,
+    videoItem.videoTitle = response.data.items[0].snippet.title;
+    return videoItem;
   }
 }
