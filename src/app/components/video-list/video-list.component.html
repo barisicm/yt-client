@@ -1,3 +1,13 @@
-<p>
-  video-list works!
-</p>
+<h4 class="pt-4 mb-2">Related Videos</h4>
+<hr />
+<app-video-list-item *ngFor="let item of videosList;let i = index" 
+[videoTitle]="item[i].videoTitle"
+[description]="item[i].description" 
+[thumbnailUrl]="item[i].thumbnailUrl"
+[channelId]="item[i].channelId"
+[videoId]="item[i].videoId"
+[channelTitle]="item[i].channelTitle">
+</app-video-list-item>
+
+
+

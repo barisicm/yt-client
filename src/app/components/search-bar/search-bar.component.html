@@ -1,3 +1,11 @@
-<p>
-  search-bar works!
-</p>
+<div class="row align-items-center pt-2">
+    <div class="col-3 pl-0">
+        <img class="logo" src="./assets/logo.png">
+    </div>
+    <div class="col-9 pr-0">
+        <div class="w-100">
+            <input type="text" [(ngModel)]="searchValue" (keyup)="inputSubmit($event.keyCode)" class="form-control search-bar" placeholder="Search" aria-label="Search bar">
+            <span class="fa fa-search srch-icon clickable" (click)="inputSubmit('allowAll')"></span>
+          </div>  
+    </div>
+  </div>

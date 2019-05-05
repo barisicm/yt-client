@@ -1,3 +1,17 @@
-<p>
-  video-details works!
-</p>
+        <div *ngIf="currentUrl==='';" class="align-items-center d-flex h-100">
+          <p class="m-auto">Start searching for videos to get results</p>
+        </div>
+        <div *ngIf="currentUrl !== '';">
+          <div class="embed-responsive embed-responsive-16by9 iframe-curved">
+            <iframe width="893" height="522" [src]="currentUrl" frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="video-info pt-4 pb-4">
+            <div class="channel row align-items-center pb-2 m-0">
+              <img class="channel-img" [src]="url">
+              <h5 class="channel-name pt-2 pl-4 clickable" (click)="gotoChannels()">{{this.currentVideo.channelTitle}}</h5>
+            </div>
+            <h4 class="pt-4">{{currentVideo.videoTitle}}</h4>
+            <p class="description"> {{currentVideo.description}}</p>
+          </div>
+        </div>

@@ -1,3 +1,7 @@
-<p>
-  video-list-item works!
-</p>
+<div class="item d-flex align-items-center mb-2 clickable" (click)="dispatchVideo()">
+    <img [src]="thumbnailUrl" alt="..." class="yt-thumbnail d-inline img-thumbnail rounded">
+    <div class="d-inline pl-3">
+        <h5 class="mt-2 mb-0 thumbnail-description">{{videoTitle}}</h5>
+        <p class="description thumbnail-description">{{description}}</p>
+    </div>
+  </div>
